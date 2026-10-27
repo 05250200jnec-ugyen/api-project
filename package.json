@@ -1,0 +1,22 @@
+{
+  "name": "task-api",
+  "version": "1.0.0",
+  "description": "SYD204 Backend Unit — Task List API (with frontend)",
+  "main": "server.js",
+  "scripts": {
+    "start:part1": "node server-part1.js",
+    "start": "node server.js",
+    "dev": "npx nodemon server.js",
+    "start:mvc": "node server-mvc.js",
+    "dev:mvc": "npx nodemon server-mvc.js",
+    "test:db": "node test-db.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

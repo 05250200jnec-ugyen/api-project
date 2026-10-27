@@ -1,0 +1,231 @@
+:root {
+  --bg: #f4f1ea;
+  --card: #fffdf8;
+  --ink: #1f2a24;
+  --muted: #6b746e;
+  --line: #e2ddd1;
+  --accent: #2f6b4f;
+  --accent-ink: #ffffff;
+  --danger: #b23b2e;
+  --danger-bg: #fbe9e6;
+  --ok: #2f8a55;
+  --radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #151a17;
+    --card: #1e2520;
+    --ink: #e7ece8;
+    --muted: #93a098;
+    --line: #2e3832;
+    --accent: #5fb78a;
+    --accent-ink: #0f1712;
+    --danger: #ef7a6c;
+    --danger-bg: #3a1f1b;
+    --ok: #5fb78a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.shell {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 16px 60px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 4px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.status {
+  font-size: 13px;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.status::before {
+  content: "";
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+.status.online::before { background: var(--ok); }
+.status.offline::before { background: var(--danger); }
+
+.add {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+input[type="text"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  border-radius: var(--radius);
+}
+
+.add button {
+  padding: 0 18px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.add button:disabled { opacity: .6; cursor: wait; }
+
+.error {
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  border-radius: var(--radius);
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.filters button {
+  padding: 6px 12px;
+  font-size: 14px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+.filters button span {
+  margin-left: 4px;
+  font-variant-numeric: tabular-nums;
+  opacity: .8;
+}
+.filters button.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.filters .ghost { margin-left: auto; }
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.list:empty { display: none; }
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-top: 1px solid var(--line);
+}
+.task:first-child { border-top: 0; }
+
+.toggle {
+  width: 20px; height: 20px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  overflow-wrap: anywhere;
+}
+.task.done .title {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+.body input[type="text"] { padding: 6px 10px; }
+
+.task button {
+  padding: 4px 10px;
+  font-size: 13px;
+  background: transparent;
+  color: var(--muted);
+}
+.task button:hover { color: var(--ink); }
+.task .delete:hover { color: var(--danger); }
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 32px 0;
+}
+
+.foot {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 32px; }
+  .task .edit { display: none; }
+}

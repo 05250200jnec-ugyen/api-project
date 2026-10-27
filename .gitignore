@@ -1,0 +1,15 @@
+# Dependencies — never commit these (re-install with npm install)
+node_modules/
+
+# Environment variables — NEVER commit this file (contains secrets!)
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+*.log
+
+ca.pem

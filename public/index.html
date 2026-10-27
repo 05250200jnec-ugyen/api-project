@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div>
+        <p class="eyebrow">SYD204 · Task API</p>
+        <h1>Task List</h1>
+      </div>
+      <span id="status" class="status" title="API connection">checking…</span>
+    </header>
+
+    <form id="add-form" class="add" autocomplete="off">
+      <label for="new-title" class="sr-only">New task</label>
+      <input id="new-title" type="text" maxlength="255" placeholder="What needs doing?" required>
+      <button type="submit">Add task</button>
+    </form>
+
+    <div id="error" class="error" role="alert" hidden></div>
+
+    <nav class="filters" aria-label="Filter tasks">
+      <button type="button" data-filter="all" class="active">All <span id="count-all">0</span></button>
+      <button type="button" data-filter="active">To do <span id="count-active">0</span></button>
+      <button type="button" data-filter="done">Done <span id="count-done">0</span></button>
+      <button type="button" id="refresh" class="ghost" title="Reload from server">↻ Refresh</button>
+    </nav>
+
+    <ul id="list" class="list" aria-live="polite"></ul>
+    <p id="empty" class="empty" hidden>No tasks here yet.</p>
+
+    <footer class="foot">
+      Double-click a title to rename it · Data comes from <code>/tasks</code>
+    </footer>
+  </main>
+
+  <template id="task-template">
+    <li class="task">
+      <input type="checkbox" class="toggle" aria-label="Mark complete">
+      <div class="body">
+        <span class="title"></span>
+        <span class="meta"></span>
+      </div>
+      <button type="button" class="edit" aria-label="Edit task">Edit</button>
+      <button type="button" class="delete" aria-label="Delete task">Delete</button>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
